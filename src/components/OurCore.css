@@ -1,0 +1,277 @@
+.our-core {
+  background: #f8f8f8;
+  padding: 80px 20px 100px;
+  position: relative;
+}
+
+.core-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.core-label {
+  display: inline-block;
+  padding: 8px 24px;
+  border: 2px solid #888;
+  border-radius: 25px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #666;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+}
+
+.core-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 80px;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -1px;
+}
+
+.core-title .highlight {
+  color: #862d2d;
+  font-style: italic;
+}
+
+/* Values List - Step by Step */
+.values-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.value-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.value-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.step-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a93b7;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  min-width: 60px;
+}
+
+.step-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.value-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: white;
+  font-size: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.value-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.orange-icon {
+  background: #f28c28;
+}
+
+.green-icon {
+  background: #2f7d4e;
+}
+
+.brown-icon {
+  background: #8b6b3f;
+}
+
+.green-icon-2 {
+  background: #34a853;
+}
+
+.value-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin: 15px 0 8px;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.value-desc {
+  font-size: 14px;
+  color: #ee1515;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .values-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .core-title {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+  }
+
+  .step-number {
+    font-size: 36px;
+    min-width: 50px;
+  }
+
+  .value-step {
+    padding: 25px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .step-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Alternating left/right layout */
+  .value-step:nth-child(odd) {
+    flex-direction: column;
+  }
+
+  .value-step:nth-child(even) {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 580px) {
+  .our-core {
+    padding: 40px 15px 60px;
+  }
+
+  .core-label {
+    font-size: 0.7rem;
+    padding: 6px 20px;
+  }
+
+  .core-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .values-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 100%;
+  }
+
+  .value-step {
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 12px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .step-number {
+    font-size: 36px;
+    min-width: 45px;
+  }
+
+  .step-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .value-name {
+    font-size: 14px;
+    margin: 8px 0 4px;
+  }
+
+  .value-desc {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
+  .our-core {
+    padding: 30px 10px 50px;
+  }
+
+  .core-title {
+    font-size: 1.6rem;
+  }
+
+  .values-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .value-step {
+    padding: 15px 10px;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .step-number {
+    font-size: 30px;
+    min-width: 40px;
+  }
+
+  .step-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .value-name {
+    font-size: 13px;
+    margin: 6px 0 3px;
+  }
+
+  .value-desc {
+    font-size: 10px;
+  }
+}

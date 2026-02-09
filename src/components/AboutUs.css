@@ -1,0 +1,275 @@
+/* About Us Page Styles */
+
+/* Hero Section */
+.about-hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #1c1917;
+}
+
+.about-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Slow Zoom Animation */
+@keyframes slow-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out forwards;
+}
+
+/* Owner Profile Section */
+.owner-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .owner-section {
+    flex-direction: row;
+    gap: 4rem;
+  }
+}
+
+.owner-image {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 400px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .owner-image {
+    height: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .owner-image {
+    flex: 0 0 40%;
+    height: auto;
+  }
+}
+
+.owner-content {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .owner-content {
+    padding: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .owner-content {
+    padding: 4rem;
+  }
+}
+
+/* Language Toggle */
+.language-toggle {
+  display: flex;
+  background: #f5f5f4;
+  padding: 0.25rem;
+  border-radius: 9999px;
+  border: 1px solid #e7e5e4;
+  width: fit-content;
+}
+
+.language-button {
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: #a0a0a0;
+}
+
+.language-button.active {
+  background: #f59e0b;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.language-button:hover {
+  color: #4b5563;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 28rem;
+  width: 100%;
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Styles */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #292524;
+  margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.625rem 1rem;
+  border: 2px solid #d6d3d1;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+  background: #fffbf0;
+}
+
+.form-input.error,
+.form-textarea.error {
+  border-color: #ef4444;
+  background: #fee2e2;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+/* Rating Stars */
+.rating-stars {
+  display: flex;
+  gap: 0.75rem;
+  background: #f5f5f4;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+}
+
+.star-button:hover {
+  transform: scale(1.25);
+}
+
+.star-button:active {
+  transform: scale(1.1);
+}
+
+/* Review Card */
+.review-card {
+  background: linear-gradient(to bottom right, #f5f5f4, white, #fef3c7);
+  border: 2px solid #d6d3d1;
+  border-radius: 1.125rem;
+  padding: 1.5rem;
+  transition: all 0.3s;
+}
+
+.review-card:hover {
+  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+  border-color: #fbbf24;
+}
+
+.review-card.user-review {
+  border-color: #fbbf24;
+  background: linear-gradient(to bottom right, #fffbf0, white, #fef3c7);
+}
+
+/* No Reviews State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(to bottom right, #fed7aa, #fed7aa);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .about-hero {
+    min-height: 60vh;
+  }
+
+  .owner-image {
+    height: 300px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .modal-content {
+    padding: 1.5rem;
+  }
+}

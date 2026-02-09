@@ -1,0 +1,421 @@
+.featured-benefits {
+  background: #fafaf8;
+  padding: 60px 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.benefits-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.benefits-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.benefits-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  font-family: 'Playfair Display', serif;
+}
+
+.benefits-subtitle {
+  font-size: 1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+/* Carousel Container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 0 !important;
+  align-items: center;
+  touch-action: none;
+  cursor: grab;
+  width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.carousel-track:active {
+  cursor: grabbing;
+}
+
+.carousel-item {
+  flex-shrink: 0;
+  width: 400px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  will-change: transform;
+  display: flex;
+  justify-content: center;
+  transform-origin: center;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Benefit Card */
+.benefit-card {
+  width: 100%;
+  background: #f5f5f5;
+  border-radius: 2rem;
+  padding: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0; /* Ensure the card doesn't have its own margin */
+  transition: none !important; /* Remove any CSS transitions; GSAP handles the movement */
+}
+
+.benefit-image-wrapper {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #e8e8e8;
+}
+
+.benefit-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.benefit-image-wrapper:hover .benefit-image {
+  transform: scale(1.05);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .featured-benefits {
+    padding: 40px 10px;
+  }
+
+  .benefits-header {
+    margin-bottom: 30px;
+  }
+
+  .benefits-title {
+    font-size: 2rem;
+    letter-spacing: -0.5px;
+  }
+
+  .benefits-subtitle {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .carousel-container {
+    padding: 40px 0;
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    width: 300px;
+    padding: 0 12px;
+  }
+
+  .benefit-card {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-benefits {
+    padding: 30px 8px;
+  }
+
+  .benefits-title {
+    font-size: 1.6rem;
+  }
+
+  .benefits-subtitle {
+    font-size: 0.85rem;
+    padding: 0 8px;
+  }
+
+  .carousel-container {
+    overflow: hidden;
+  }
+
+  .carousel-item {
+    width: 260px;
+    padding: 0 8px;
+  }
+
+  .benefit-card {
+    padding: 8px;
+    border-radius: 1.5rem;
+  }
+}
+
+.benefit-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  color: white;
+}
+
+.benefit-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  font-family: 'Poppins', sans-serif;
+}
+
+.benefit-card-desc {
+  font-size: 0.875rem;
+  color: #e8e8e8;
+  line-height: 1.5;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  margin-top: 48px;
+}
+
+.carousel-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.carousel-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #2d8659;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(45, 134, 89, 0.3);
+}
+
+.carousel-btn:hover {
+  background: #24664a;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(45, 134, 89, 0.4);
+}
+
+.carousel-btn:active {
+  transform: scale(0.98);
+}
+
+/* Carousel Dots */
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d0d0d0;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.dot.active {
+  width: 40px;
+  background: #2d8659;
+  border-radius: 4px;
+}
+
+.dot:hover {
+  background: #b0b0b0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .carousel-item {
+    width: 280px;
+  }
+
+  .benefits-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-benefits {
+    padding: 40px 10px;
+  }
+
+  .carousel-item {
+    width: 300px;
+  }
+
+  .benefits-title {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  .benefits-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .carousel-controls {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .benefit-card-title {
+    font-size: 1.1rem;
+  }
+
+  .benefit-card-desc {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .featured-benefits {
+    padding: 35px 10px;
+  }
+
+  .carousel-item {
+    width: 280px;
+    padding: 0 10px;
+  }
+
+  .benefits-title {
+    font-size: 1.75rem;
+  }
+
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .carousel-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dot.active {
+    width: 32px;
+  }
+}
+/* Lightbox/Enlarged Image Modal */
+.image-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  pointer-events: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.lightbox-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  z-index: 1001;
+}
+
+.lightbox-close:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}

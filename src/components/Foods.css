@@ -1,0 +1,255 @@
+.foods-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.foods-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #2c2c2c;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+}
+
+.category-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.koozh-subtitle {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #a0522d;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  margin: 40px 0 20px;
+}
+
+.category-subtitle {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #a0522d;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  margin: 40px 0 20px;
+}
+
+.koozh-separator {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #b8713e 20%, #b8713e 80%, transparent);
+}
+
+.category-separator {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, #b8713e 20%, #b8713e 80%, transparent);
+}
+
+.subcategory-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto 40px;
+  padding: 20px;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.subcategory-btn {
+  padding: 12px 28px;
+  font-weight: 400;
+  font-size: 0.95rem;
+  border: 1.5px solid #c4a590;
+  color: #8b6a52;
+  background: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.subcategory-btn:hover {
+  border-color: #9c7043;
+  color: #7a5438;
+}
+
+.subcategory-btn.active {
+  background: #9c7043;
+  color: #fff;
+  border-color: #9c7043;
+}
+
+.category-btn {
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+  color: #7b5a3c;
+}
+
+.category-btn:hover {
+  border-color: #9c5a27;
+  color: #9c5a27;
+}
+
+.category-btn.active {
+  background: #9c5a27;
+  color: white;
+  border-color: #9c5a27;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .foods-container {
+    padding: 0 15px;
+    margin: 30px auto;
+  }
+
+  .foods-container h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .category-filters {
+    gap: 8px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    padding: 15px;
+  }
+
+  .subcategory-filters {
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .category-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 640px) {
+  .foods-container {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .foods-container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 10px 0;
+  }
+
+  .category-filters {
+    margin-bottom: 20px;
+    gap: 6px;
+  }
+
+  .category-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .foods-container {
+    margin: 15px auto;
+    padding: 0 10px;
+  }
+
+  .foods-container h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .koozh-subtitle,
+  .category-subtitle {
+    font-size: 1.6rem;
+    margin: 30px 0 15px;
+  }
+
+  .subcategory-filters {
+    gap: 8px;
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .subcategory-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .category-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .category-filters {
+    margin-bottom: 15px;
+    gap: 5px;
+  }
+
+  .category-btn {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}

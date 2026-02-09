@@ -1,0 +1,76 @@
+.signature-selection {
+  background: #f8f8f8;
+  padding: 48px 18px;
+}
+
+.selection-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.selection-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.5px;
+}
+
+.selection-title .highlight {
+  color: #2d8659;
+  font-style: italic;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .selection-title {
+    font-size: 2.5rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .signature-selection {
+    padding: 32px 14px;
+  }
+
+  .selection-title {
+    font-size: 2rem;
+    margin-bottom: 24px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signature-selection {
+    padding: 24px 10px;
+  }
+
+  .selection-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
