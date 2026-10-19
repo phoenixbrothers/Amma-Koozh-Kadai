@@ -135,7 +135,7 @@ function Building({ site, selected, hovered, onHover, onSelect }: { site: Campus
   return (
     <group position={[x, 0, z]}>
       {body}
-      <Html position={[0, site.type === 'hq' ? 5 + lvl : 4, 0]} center zIndexRange={[20, 0]} occlude={false}>
+      <Html position={[0, site.type === 'hq' ? 4.2 + lvl : 3.2, 0]} center zIndexRange={[20, 0]} occlude={false}>
         <button className="hotspot campus-label" aria-pressed={selected} onClick={() => onSelect(site.id)} onMouseEnter={() => onHover(site.id)} onMouseLeave={() => onHover(null)} tabIndex={-1}>
           <span className={`dot ${site.tone}`} aria-hidden />
           <b>{site.label}</b>
@@ -220,9 +220,9 @@ function CameraRig({ resetKey, zoom, controls }: { resetKey: number; zoom: numbe
   const { camera, invalidate } = useThree();
   useEffect(() => {
     // zoom < 1 moves the camera closer; keyboard-accessible alternative to wheel/pinch
-    camera.position.set(14 * zoom, 13 * zoom, 16 * zoom);
-    camera.lookAt(0, 0, 0);
-    controls.current?.target.set(0, 0, 0);
+    camera.position.set(15 * zoom, 15 * zoom, 18 * zoom);
+    camera.lookAt(0, 0, -1);
+    controls.current?.target.set(0, 0, -1);
     controls.current?.update();
     invalidate();
   }, [resetKey, zoom, camera, controls, invalidate]);
@@ -233,7 +233,7 @@ export default function Campus3D({ sites, selected, onSelect, zoom, resetKey }: 
   const [hover, setHover] = useState<string | null>(null);
   const controls = useRef<any>(null);
   return (
-    <Canvas frameloop="demand" camera={{ position: [14, 13, 16], fov: 38 }} dpr={[1, 1.75]} onPointerMissed={() => onSelect(null)} gl={{ antialias: true, powerPreference: 'low-power' }} style={{ height: 420 }}>
+    <Canvas frameloop="demand" camera={{ position: [15, 15, 18], fov: 38 }} dpr={[1, 1.75]} onPointerMissed={() => onSelect(null)} gl={{ antialias: true, powerPreference: 'low-power' }} style={{ height: '100%', minHeight: 420, flex: 1 }}>
       <color attach="background" args={['#14456b']} />
       <fog attach="fog" args={['#14456b', 35, 70]} />
       <hemisphereLight args={['#dfefff', '#2b4a2f', 0.9]} />

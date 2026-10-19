@@ -4,7 +4,7 @@
  * flagged isDemo and the world is flagged is_demo so the UI labels it.
  */
 import type { WorldService } from './worlds';
-import { SUPPLIERS, landedQuote, monthlyMaterialNeeds, planFeasibility } from '../engine/index';
+import { SUPPLIERS, landedQuote, monthlyMaterialNeeds, planFeasibility, routeDelay } from '../engine/index';
 import type { Company, WorldState } from '../engine/index';
 
 function procureFor(service: WorldService, worldId: string, userId: string, company: () => Company, world: () => WorldState, months: number) {
@@ -65,6 +65,14 @@ export function createDemoWorld(service: WorldService, userId: string, industry:
   // run two months so the dashboard has history
   for (let i = 0; i < 2; i++) {
     service.execute(wid, userId, { type: 'advance_month', payload: { expectedTick: W().tick } });
+    // respond to disruptions the way a player would: air-freight orders held up by a disrupted route
+    for (const po of C().purchaseOrders.filter((p) => (p.status === 'in_transit' || p.status === 'delayed') && p.mode !== 'expedited' && routeDelay(W(), SUPPLIERS[p.supplierId].routeId) > 0)) {
+      try {
+        service.execute(wid, userId, { type: 'expedite_po', companyId: cid, payload: { poId: po.id } });
+      } catch {
+        /* not expeditable (e.g. export ban) */
+      }
+    }
     procureFor(service, wid, userId, C, W, 2);
     setPlans(service, wid, userId, C, W);
   }

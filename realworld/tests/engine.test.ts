@@ -132,6 +132,17 @@ describe('production constraints (SIM-02)', () => {
     expect(() => validatePlan(world, company(), line.id, f.maxFeasible)).not.toThrow();
   });
 
+  it('raising one line never silently makes another line infeasible', () => {
+    const { world, companyId, company } = newCompanyWorld();
+    operate(world, company(), 0.6);
+    const [l1, l2] = company().lines;
+    const before = planFeasibility(world, company()).find((f) => f.lineId === l2.id)!;
+    expect(before.feasible).toBe(l2.plannedUnits);
+    const max1 = validatePlan(world, company(), l1.id, 0).maxFeasible;
+    act(world, 'set_production_plan', { lineId: l1.id, plannedUnits: max1 }, companyId);
+    for (const f of planFeasibility(world, company())) expect(f.feasible).toBe(f.planned);
+  });
+
   it('consumes exactly the bill of materials and never produces twice in one tick', () => {
     const { world, company } = newCompanyWorld();
     operate(world, company(), 0.3, 1);

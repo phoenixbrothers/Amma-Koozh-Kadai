@@ -86,6 +86,8 @@ export function planFeasibility(
   company: Company,
   overrides: Record<string, { plannedUnits?: number; productId?: string | null }> = {},
   includeInbound = true,
+  /** evaluate this line after all others, so its maximum respects other lines' standing plans */
+  lastLineId?: string,
 ): Feasibility[] {
   let labor = laborHoursAvailable(company);
   const energy: Record<string, number> = {};
@@ -98,7 +100,8 @@ export function planFeasibility(
     }
   }
   const out: Feasibility[] = [];
-  for (const line of company.lines) {
+  const ordered = lastLineId ? [...company.lines.filter((l) => l.id !== lastLineId), ...company.lines.filter((l) => l.id === lastLineId)] : company.lines;
+  for (const line of ordered) {
     const ov = overrides[line.id] ?? {};
     const productId = ov.productId !== undefined ? ov.productId : line.productId;
     const planned = ov.plannedUnits ?? line.plannedUnits;
@@ -260,7 +263,7 @@ export function validatePlan(world: WorldState, company: Company, lineId: string
     const p = company.products.find((x) => x.id === productId && x.status === 'active');
     if (!p) throw new DomainError('Product is not active', 'INVALID');
   }
-  const f = planFeasibility(world, company, { [lineId]: { plannedUnits, productId } }).find((x) => x.lineId === lineId)!;
+  const f = planFeasibility(world, company, { [lineId]: { plannedUnits, productId } }, true, lineId).find((x) => x.lineId === lineId)!;
   if (plannedUnits > f.maxFeasible) {
     throw new DomainError(
       `Planned output ${plannedUnits} exceeds the feasible maximum of ${f.maxFeasible} (limited by ${f.bottleneck?.label ?? 'capacity'}).`,

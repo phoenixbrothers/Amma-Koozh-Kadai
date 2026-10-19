@@ -335,7 +335,8 @@ export function createApp(cfg: AppConfig) {
       cc = getCompany(w, c.id);
       cc.overtime = body.overtime;
     }
-    const after = planFeasibility(w, cc, { [body.lineId]: { plannedUnits: body.plannedUnits, productId: body.productId } });
+    const order = (x: { lineId: string }[]) => [...x].sort((a, b) => c.lines.findIndex((l) => l.id === a.lineId) - c.lines.findIndex((l) => l.id === b.lineId));
+    const after = order(planFeasibility(w, cc, { [body.lineId]: { plannedUnits: body.plannedUnits, productId: body.productId } }, true, body.lineId)) as typeof before;
     res.json({ before, after });
   }));
 

@@ -51,12 +51,13 @@ export function SeverityBadge({ severity }: { severity: Severity }) {
 }
 
 export function Panel({ title, actions, children, className, id, sub }: { title?: ReactNode; actions?: ReactNode; children: ReactNode; className?: string; id?: string; sub?: ReactNode }) {
+  const headingId = useId();
   return (
-    <section className={['panel', className].filter(Boolean).join(' ')} aria-labelledby={title ? `${id ?? ''}h` : undefined} id={id}>
+    <section className={['panel', className].filter(Boolean).join(' ')} aria-labelledby={title ? headingId : undefined} id={id}>
       {(title || actions) && (
         <div className="panel-head">
           <div>
-            {title && <h2 id={`${id ?? ''}h`}>{title}</h2>}
+            {title && <h2 id={headingId}>{title}</h2>}
             {sub && <p className="small muted">{sub}</p>}
           </div>
           {actions && <div className="row">{actions}</div>}

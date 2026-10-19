@@ -52,7 +52,7 @@ export default function Overview() {
           </span>
         </div>
         <span className="small muted">Top risk: {topRisk ? <Link to={`${base}/${topRisk.module}`}>{topRisk.title}</Link> : 'none flagged'}</span>
-        <Link to={`${base}/${nextLink}`} className="btn sm primary" style={{ marginLeft: 'auto' }}>
+        <Link to={`${base}/${nextLink}`} className="btn sm primary wrap" style={{ marginLeft: 'auto' }}>
           Next: {nextAction} <ArrowRight aria-hidden />
         </Link>
       </section>
