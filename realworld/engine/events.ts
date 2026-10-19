@@ -602,7 +602,8 @@ export function computeExposure(world: WorldState, company: Company, ev: WorldEv
             items.push({ type: 'product', id: p.id, label: p.name, detail: 'Depends on the restricted input', module: 'manufacturing' });
           }
         }
-        altSupplierMitigations(ban.materialIds.filter((m) => needs[m]), (sid) => SUPPLIERS[sid].country === ban.country);
+        const blockedMats = openPOs.filter((po) => SUPPLIERS[po.supplierId].country === ban.country && ban.materialIds.includes(po.materialId)).map((po) => po.materialId);
+        altSupplierMitigations([...new Set([...ban.materialIds.filter((m) => needs[m]), ...blockedMats])], (sid) => SUPPLIERS[sid].country === ban.country);
       }
       basis = 'Gross profit at risk once on-hand cover is exhausted (35% margin assumption).';
       break;

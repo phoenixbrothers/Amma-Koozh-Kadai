@@ -18,3 +18,5 @@ export * from './simulation';
 export * from './actions';
 export * from './invariants';
 export { createRng } from './rng';
+export * from './selectors';
+export * from './forecast';
